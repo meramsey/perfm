@@ -118,7 +118,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         #     super().__init__(*args, **kwargs)
         self.setupUi(self)
         # self.show()
-        current_locale = QtCore.QLocale()
 
         self.model = QFileSystemModel()
         homedir = os.environ['HOME']
@@ -141,9 +140,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # os.startfile(file_path)
         file = QFileInfo(file_path)
         file_modified = file.lastModified().toString()
-        # print(str(file.permissions))
+        print(str(file.permissions))
         self.file_name_info.setText(file.canonicalFilePath())
-        self.file_size_info.setText(str(locale.formattedDataSize(file.size())))
+        self.file_size_info.setText(str(file.size()))
         self.file_changed_info.setText(str(file_modified))
 
 
